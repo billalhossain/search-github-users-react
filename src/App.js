@@ -1,26 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import {Dashboard, Error, Login, PrivateRoute, AuthWrapper, AuthLoginRoute} from './Pages'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {GitHubContext} from './Context/ContextProvider'
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthWrapper>
+    <Router>
+      <Switch>
+        <PrivateRoute path='/' exact>
+          <Dashboard></Dashboard>
+        </PrivateRoute>
+        <AuthLoginRoute path='/login' exact>
+          <Login></Login>
+        </AuthLoginRoute>
+        {/* <Route path='/login'>
+          <Login></Login>
+        </Route> */}
+        <Route path='*'>
+          <Error></Error>
+        </Route>
+      </Switch>
+    </Router>
+  </AuthWrapper>
   );
 }
 
-export default App;
+export default React.memo(App);
