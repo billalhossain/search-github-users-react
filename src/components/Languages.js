@@ -6,37 +6,30 @@ function Languages() {
     const { reposLanguages } = useContext(GitHubContext)
     const [languages, setLanguages] = useState([])
     const [total, setTotal] = useState('null')
+    console.log(reposLanguages);
 
     function uniqueLanguageValue(original) {
-        var prev, array = [];
-
-        original.sort();
-        for ( var i = 0; i < original.length; i++ ) {
-            if ( original[i] !== prev ) {
-
+        
+        const uniqueLanguages = original.reduce( (prevItem, currentItem) => {
+            if( prevItem.some( item => item.label === currentItem) ){
+                const currentObj = prevItem.filter( item => item.label === currentItem)[0]
+                currentObj.value++
+            }else{
                 let obj = {
-                    label: original[i],
+                    label: currentItem,
                     value: 1
                 }
-                array.push(obj)
-                
-            } else {
-                array.map( item => {
-                if(item.label === original[i]){
-                    item.value++
-                }
-                })
+                prevItem.push(obj)
             }
-            prev = original[i];
-        }
-            
-            var total = 0
-            array.map( item => {
-                total += item.value
-            })
-            setTotal( total )
-    
-        return array;         
+            return prevItem
+        },[])
+
+        const total = uniqueLanguages.reduce( (prev, currentItem) => {
+            return prev + currentItem.value
+        }, 0)
+        setTotal( total )
+
+        return uniqueLanguages         
     };
 
     useEffect( () => {

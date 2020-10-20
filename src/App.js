@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {Dashboard, Error, Login, PrivateRoute, AuthWrapper, AuthLoginRoute} from './Pages'
 import {BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import {GitHubContext} from './Context/ContextProvider'
 function App() {
   return (
     <AuthWrapper>

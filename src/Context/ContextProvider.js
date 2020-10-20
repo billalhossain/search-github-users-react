@@ -17,6 +17,7 @@ function ContextProvider({children}) {
     // SEARCH GITHUB USER   
     const searchGithubUser = (user) => {
         setIsLoading(true);
+        setReposLanguages([])
         axios.get(`https://api.github.com/users/${user}`)
         .then( res => {
 
@@ -30,7 +31,6 @@ function ContextProvider({children}) {
             .then( res => {
                 setFollowers(res.data)
             })
-
 
             //SET USER REPOSITORY DATA
             const repos = res.data.repos_url
@@ -52,15 +52,11 @@ function ContextProvider({children}) {
     }
 
     useEffect(() => {
-        
-        if(user && user.nickname){
+        if(user && user.sub.includes("github")){
             const userApiUrl  = 'https://api.github.com/users/'+ user.nickname
             axios.get(userApiUrl)
             .then( res => {
                 searchGithubUser(user.nickname)
-            })
-            .catch( res => {
-                searchGithubUser('billalhossain')
             })
         }
     }, [user])
