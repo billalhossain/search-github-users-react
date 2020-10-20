@@ -6,7 +6,6 @@ function Languages() {
     const { reposLanguages } = useContext(GitHubContext)
     const [languages, setLanguages] = useState([])
     const [total, setTotal] = useState('null')
-    console.log(reposLanguages);
 
     function uniqueLanguageValue(original) {
         
