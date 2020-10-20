@@ -39,14 +39,14 @@ function Languages() {
     return reposLanguages.length ? (
         <Wrapper>
             <h3>Repos Languages</h3>
-            <div className="language-chart">
+            <div className="language-info">
                 {
                     languages.map((item,i) => {
                         return (
                             <Fragment key={i}>
                                 <div className="item" >
                                     <span>{item.label}</span>
-                                    <span>{((item.value / total) * 100).toFixed(2) } %</span>
+                                    <span className='language-percentage'>{((item.value / total) * 100).toFixed(2) } %</span>
                                 </div>
                             </Fragment>
                         )
@@ -61,10 +61,20 @@ const Wrapper = styled.section`
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 20px;
-    .language-chart{
-        display: grid;
-        grid-template-columns: auto auto;
-
+    .language-info{
+        max-height: 250px;
+        overflow: hidden;
+        overflow-y: scroll;
+    }
+    .language-info::-webkit-scrollbar {
+        width: 5px;
+    }
+    .language-info::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+        
+    .language-info::-webkit-scrollbar-thumb {
+        background: #ddd; 
     }
     h3{
         font-size: 20px;
@@ -72,13 +82,13 @@ const Wrapper = styled.section`
     }
     .item{
         margin-right: 10px;
-        display: grid;
-        grid-template-columns: auto auto;
-        gap: 20px;
         padding: 20px;
         border-radius: 5px;
         margin-bottom: 20px;
         box-shadow: 0 0 5px rgba(0,0,0,.1)
+    }
+    .language-percentage{
+        float: right;
     }
 `
 

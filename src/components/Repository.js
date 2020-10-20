@@ -7,22 +7,14 @@ function Repository() {
     function compressArray(original) {
  
         var compressed = [];
-        // make a copy of the input array
         var copy = original.slice(0);
      
-        // first loop goes over every element
         for (var i = 0; i < original.length; i++) {
      
             var myCount = 0;	
-            // loop over every element in the copy and see if it's the same
-            for (var w = 0; w < copy.length; w++) {
-                if (original[i] == copy[w]) {
-                    // increase amount of times duplicate is found
-                    // myCount++;
-                    console.log('matched');
-
-                    // sets item to undefined
-                    delete copy[w];
+            for (var i = 0; i < copy.length; i++) {
+                if (original[i] == copy[i]) {
+                    delete copy[i];
                 }
             }
             console.log(myCount);

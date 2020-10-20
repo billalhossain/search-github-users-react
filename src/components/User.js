@@ -1,4 +1,5 @@
 import React, {Fragment, useContext} from 'react'
+import Moment from 'react-moment'
 import styled from 'styled-components'
 import {GitHubContext} from '../Context/ContextProvider'
 
@@ -12,7 +13,8 @@ function User() {
         login,
         id,
         company,
-        html_url
+        html_url,
+        created_at,
 
     } = githubUser
 
@@ -27,11 +29,11 @@ function User() {
                     <p className="name">{name}</p>
                     <a href={html_url} target="_blank">@{login}</a>
                 </div>
-                <div><a href={html_url} className="btn btn-primary">Follow</a></div>
             </article>
             <p className="company">{company || null}</p>
             <p className="bio">{bio || null}</p>
             <p className="address">{location || null}</p>
+            <p className="member-since">Member since: <Moment format='MMM YYYY'>{created_at}</Moment> </p>
         </Wrapper>
     ): <Wrapper><p>No data found </p></Wrapper> 
 }
@@ -40,8 +42,9 @@ const Wrapper = styled.section`
     background: #fff;
     border-radius: 5px;
     margin-bottom: 20px;
+    min-height: 260px;
     article {
-        display: grid;
+        display: flex;
         grid-template-columns: 100px auto 15%;
         column-gap: 20px;
         margin-bottom: 18px;
@@ -51,12 +54,12 @@ const Wrapper = styled.section`
         .img-section {
             border-radius: 50%;
             overflow: hidden;
+            max-width: 120px;
             img{
                 width: 100%;
             }
         }
         .name {
-            margin-bottom: 0;
             text-transform: capitalize;
             font-weight: 600;
             font-size: 20px;
@@ -66,7 +69,7 @@ const Wrapper = styled.section`
             }
         }
         p{
-            margin-bottom: 0;
+            margin-bottom: 5px;
         }
         .company{
             margin-bottom: 10px;

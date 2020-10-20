@@ -42,7 +42,7 @@ function Navbar() {
 
 const Wrapper = styled.section `
     background: #fff;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     .navbar-items{
         padding: 20px 30px;
         display: flex;

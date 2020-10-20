@@ -10,6 +10,7 @@ function ContextProvider({children}) {
     const [githubUser, setGithubUser] = useState(mocUser)
     const [followers, setFollowers] = useState(mocFollowers)
     const [reposLanguages, setReposLanguages] = useState([])
+    const [latestRepos, setLatestRepos] = useState([])
     const [errorMsg, setErrorMsg] = useState(null)
     const [isLoading, setIsLoading] = useState(false);
     const { user } = useAuth0();
@@ -42,6 +43,11 @@ function ContextProvider({children}) {
                         [...prevState, language.language]
                     ))
                 })
+
+            })
+            axios.get(res.data.repos_url + `?sort='created:asc'`)
+            .then( res => {
+                setLatestRepos(res.data)
             })
             setIsLoading(false);
 
@@ -72,6 +78,7 @@ function ContextProvider({children}) {
                 errorMsg,
                 user,
                 isLoading,
+                latestRepos,
             }}>
                 {children}
             </GitHubContext.Provider>

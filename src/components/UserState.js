@@ -7,25 +7,20 @@ import Languages from './Languages'
 import SearchUser from './SearchUser'
 import Navbar from './Navbar'
 import User from './User'
+import LatestRepos from './LatestRepos'
 
 function UserState() {
     return (
         <Container>
             <Info />
             <Row>
-                <Col sm={12} md={6}>
-                    <User/>
+                <Col sm={12} md={8}>
+                    <User />
+                    <LatestRepos />
                 </Col>
-                <Col sm={12} md={6}>
+                <Col sm={12} md={4}>
                     <Followers />
-                </Col>
-            </Row>
-            <Row>
-                <Col sm={12} md={6}>
                     <Languages/>
-                </Col>
-                <Col sm={12} md={6}>
-                    {/* <LanguageChart /> */}
                 </Col>
             </Row>
         </Container>
