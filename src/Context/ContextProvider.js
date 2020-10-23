@@ -1,14 +1,12 @@
 import axios from 'axios'
 import React, { createContext, useEffect, useState } from 'react'
-import mocUser from './githubUserData/mocUser'
-import mocFollowers from './githubUserData/mocFollowers'
 import { useAuth0 } from "@auth0/auth0-react";
 const GitHubContext = React.createContext()
 
 
 function ContextProvider({children}) {
-    const [githubUser, setGithubUser] = useState(mocUser)
-    const [followers, setFollowers] = useState(mocFollowers)
+    const [githubUser, setGithubUser] = useState('')
+    const [followers, setFollowers] = useState('')
     const [reposLanguages, setReposLanguages] = useState([])
     const [latestRepos, setLatestRepos] = useState([])
     const [errorMsg, setErrorMsg] = useState(null)
@@ -56,17 +54,6 @@ function ContextProvider({children}) {
             setErrorMsg(error.message)
         })
     }
-
-    useEffect(() => {
-        if(user && user.sub.includes("github")){
-            const userApiUrl  = 'https://api.github.com/users/'+ user.nickname
-            axios.get(userApiUrl)
-            .then( res => {
-                searchGithubUser(user.nickname)
-            })
-        }
-    }, [user])
-    
 
     return (
         <div>

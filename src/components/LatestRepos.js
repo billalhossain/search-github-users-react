@@ -4,7 +4,6 @@ import {GitHubContext} from '../Context/ContextProvider'
 
 function LatestRepos() {
     const { latestRepos } = useContext(GitHubContext)
-    console.log('');
     return (
         <Wrapper >
             <h3>Latest Repos</h3>

@@ -1,5 +1,3 @@
-import Navbar  from './Navbar'
-import LanguageChart from '../Charts/LanguageChart'
 import Followers from './Followers'
 import Info from './Info'
 import Languages from './Languages'
@@ -10,7 +8,6 @@ import UserState from './UserState'
 
 
 export {
-    Navbar, 
     Followers, 
     Info, 
     Repository, 
@@ -18,5 +15,4 @@ export {
     User, 
     UserState, 
     Languages, 
-    LanguageChart 
 } 

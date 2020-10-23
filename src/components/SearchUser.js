@@ -12,34 +12,45 @@ function SearchUser() {
     }
     return (
         <Wrapper>
-            <form onSubmit={loadUser}>
-                <InputGroup>
-                    <FormControl
-                         type="text"
-                         value={user}
-                         placeholder="Search github user name"
-                         className="form-control"
-                         onChange={ (e) => setUser(e.target.value)}
-                    />
-                    <InputGroup.Append>
-                    <Button variant="btn btn-primary" type="submit">Search</Button>
-                    </InputGroup.Append>
-                </InputGroup>
-                {
-                    errorMsg && <p className="error-msg" >{errorMsg}</p>
-                }
-            </form>
+            <div className="container">
+                <div className="content">
+                    <h2>Search github user</h2>
+                    <form onSubmit={loadUser}>
+                        <InputGroup>
+                            <FormControl
+                                type="text"
+                                value={user}
+                                placeholder="Type github user name"
+                                className="form-control"
+                                onChange={ (e) => setUser(e.target.value)}
+                            />
+                            <InputGroup.Append>
+                            <Button variant="btn btn-primary" type="submit">Search</Button>
+                            </InputGroup.Append>
+                        </InputGroup>
+                        {
+                            errorMsg && <p className="error-msg" >{errorMsg}</p>
+                        }
+                    </form>
+                </div>
+            </div>
         </Wrapper>
     )
 }
 
 const Wrapper = styled.section`
     background: #fff;
-    padding: 20px;
     margin-bottom: 20px;
+    .content{
+        padding: 30px 0;
+    }
     .error-msg{
         color: red;
         margin: 0;
+    }
+    h2{
+        margin: 0;
+        margin-bottom: 20px;
     }
     
 `
