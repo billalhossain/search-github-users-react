@@ -1,6 +1,6 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Find Github User
+## Find Github Users
 simple react project to find github users. <br />
 [Live](https://finder-githubusers.netlify.app)
 
