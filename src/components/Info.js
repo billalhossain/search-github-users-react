@@ -2,29 +2,29 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 import {GitHubContext} from '../Context/ContextProvider'
 
-function Info() {
+function Info({translation}) {
     const { githubUser } = useContext(GitHubContext)
     const {public_repos, public_gists, followers, following} = githubUser
     return (
         <Wrapper>
             <Item>
                 <span>{public_repos}</span>
-                <label htmlFor="">Repos</label>
+                <label htmlFor="">{translation('Repos')}</label>
             </Item>
 
             <Item>
                 <span>{following}</span>
-                <label htmlFor="">following</label>
+                <label htmlFor="">{translation('following')}</label>
             </Item>
 
             <Item>
                 <span>{followers}</span>
-                <label htmlFor="">followers</label>
+                <label htmlFor="">{translation('followers')}</label>
             </Item>
 
             <Item>
                 <span>{public_gists}</span>
-                <label htmlFor="">Gists</label>
+                <label htmlFor="">{translation('Gists')}</label>
             </Item>
         </Wrapper>
     )

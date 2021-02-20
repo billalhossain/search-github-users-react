@@ -2,8 +2,10 @@ import React, { useContext, useState } from 'react'
 import { Button, FormControl, InputGroup } from 'react-bootstrap'
 import {GitHubContext} from '../Context/ContextProvider'
 import styled from 'styled-components'
+import { useTranslation } from 'react-i18next';
 
 function SearchUser() {
+    const {t} = useTranslation();
     const {searchGithubUser, errorMsg} = useContext(GitHubContext)
     const [user, setUser] = useState('')
     const loadUser = (e) =>{
@@ -14,7 +16,7 @@ function SearchUser() {
         <Wrapper>
             <div className="container">
                 <div className="content">
-                    <h2>Search github user</h2>
+                    <h2>{t('Search github user')}</h2>
                     <form onSubmit={loadUser}>
                         <InputGroup>
                             <FormControl
@@ -25,7 +27,7 @@ function SearchUser() {
                                 onChange={ (e) => setUser(e.target.value)}
                             />
                             <InputGroup.Append>
-                            <Button variant="btn btn-primary" type="submit">Search</Button>
+                            <Button variant="btn btn-primary" type="submit">{t('Search')}</Button>
                             </InputGroup.Append>
                         </InputGroup>
                         {

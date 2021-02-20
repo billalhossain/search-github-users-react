@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import {GitHubContext} from '../Context/ContextProvider'
 
-function Languages() {
+function Languages({translation}) {
     const { reposLanguages } = useContext(GitHubContext)
     const [languages, setLanguages] = useState([])
     const [total, setTotal] = useState('null')
@@ -38,7 +38,7 @@ function Languages() {
     },[reposLanguages])
     return reposLanguages.length ? (
         <Wrapper>
-            <h3>Repos Languages</h3>
+            <h3>{translation('Repos Languages')}</h3>
             <div className="language-info">
                 {
                     languages.map((item,i) => {
@@ -54,7 +54,7 @@ function Languages() {
                 }
             </div>
         </Wrapper>
-    ): <Wrapper><p>No data found</p></Wrapper> 
+    ): <Wrapper><p>{translation('No data found')}</p></Wrapper> 
 }
 const Wrapper = styled.section`
     background: #fff;

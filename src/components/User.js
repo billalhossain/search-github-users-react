@@ -3,7 +3,7 @@ import Moment from 'react-moment'
 import styled from 'styled-components'
 import {GitHubContext} from '../Context/ContextProvider'
 
-function User() {
+function User({translation}) {
     const { githubUser } = useContext(GitHubContext)
     const {
         name, 
@@ -33,9 +33,9 @@ function User() {
             <p className="company">{company || null}</p>
             <p className="bio">{bio || null}</p>
             <p className="address">{location || null}</p>
-            <p className="member-since">Member since: <Moment format='MMM YYYY'>{created_at}</Moment> </p>
+            <p className="member-since">{translation('Member since')}: <Moment format='MMM YYYY'>{created_at}</Moment> </p>
         </Wrapper>
-    ): <Wrapper><p>No data found </p></Wrapper> 
+    ): <Wrapper><p>{translation('No data found')} </p></Wrapper> 
 }
 const Wrapper = styled.section`
     padding: 30px 20px;

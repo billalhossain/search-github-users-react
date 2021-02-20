@@ -2,19 +2,19 @@ import React, { useContext } from 'react'
 import styled from 'styled-components';
 import {GitHubContext} from '../Context/ContextProvider'
 
-function LatestRepos() {
+function LatestRepos({translation}) {
     const { latestRepos } = useContext(GitHubContext)
     return (
         <Wrapper >
-            <h3>Latest Repos</h3>
+            <h3>{translation('Latest Repos')}</h3>
             {
                 latestRepos && latestRepos.map( (repo, index) => {
                     return index >= 4 ? null :
                         <div className="repo-content" key={index}>
                             <a href={repo.html_url} target="_blank" className='repo-name'>{repo.name}</a>
                             <div className="">
-                                <span className="badge"> Starts: {repo.stargazers_count}</span>
-                                <span className="badge"> Watchers: {repo.watchers_count}</span>
+                                <span className="badge"> {translation('Starts')}: {repo.stargazers_count}</span>
+                                <span className="badge"> {translation('Watchers')}: {repo.watchers_count}</span>
                             </div>
                             <p className="description">{repo.description ? repo.description : 'null'}</p>
                         </div>

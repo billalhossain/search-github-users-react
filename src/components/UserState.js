@@ -6,20 +6,22 @@ import Languages from './Languages'
 import User from './User'
 import LatestRepos from './LatestRepos'
 import {GitHubContext} from '../Context/ContextProvider'
+import { useTranslation } from 'react-i18next'
 
 function UserState() {
     const { githubUser } = useContext(GitHubContext)
+    const {t} = useTranslation()
     return githubUser.id ? (
         <Container>
-            <Info />
+            <Info translation={t}/>
             <Row>
                 <Col sm={12} md={8}>
-                    <User />
-                    <LatestRepos />
+                    <User translation={t}/>
+                    <LatestRepos translation={t}/>
                 </Col>
                 <Col sm={12} md={4}>
-                    <Followers />
-                    <Languages/>
+                    <Followers translation={t}/>
+                    <Languages translation={t}/>
                 </Col>
             </Row>
         </Container>

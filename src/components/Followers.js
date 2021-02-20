@@ -1,12 +1,14 @@
 import React, {Fragment, useContext} from 'react'
+import { useTranslation } from 'react-i18next'
 import styled from 'styled-components'
 import {GitHubContext} from '../Context/ContextProvider'
 
-function Followers() {
+function Followers({translation}) {
     const { followers } = useContext(GitHubContext)
+    const {t} = useTranslation()
     return (
         <Wrapper>
-            <h3>Followers</h3>
+            <h3>{t('followers')}</h3>
             
                 {
                     followers.length ?
@@ -28,7 +30,7 @@ function Followers() {
                                 })
                             }
                         </div>
-                        : <p>No data found</p>
+                        : <p>{translation('No data found')}</p>
                 }
         </Wrapper> 
     )
